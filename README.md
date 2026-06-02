@@ -20,12 +20,8 @@
     </line>
     <!-- Arduino block -->
     <rect x="410" y="60" width="130" height="80" rx="12" fill="#1e2a4a" stroke="#66ff66" stroke-width="2"/>
-    <text x="475" y="95" text-anchor="middle" fill="#66ff66" font-size="14">Arduino Uno</text>
-    <text x="475" y="115" text-anchor="middle" fill="#ccc" font-size="10">L298N + Sensors</text>
     <!-- ESP32 Server block -->
     <rect x="410" y="150" width="130" height="80" rx="12" fill="#1e2a4a" stroke="#ffaa44" stroke-width="2"/>
-    <text x="475" y="185" text-anchor="middle" fill="#ffaa44" font-size="14">ESP32 Server</text>
-    <text x="475" y="205" text-anchor="middle" fill="#ccc" font-size="10">Steppers + Bridge</text>
     <!-- Bluetooth arrow -->
     <line x1="540" y1="190" x2="620" y2="190" stroke="#44ccff" stroke-width="3" stroke-dasharray="6,3">
       <animate attributeName="stroke-dashoffset" values="0;-18" dur="1s" repeatCount="indefinite"/>
@@ -33,8 +29,6 @@
     <text x="580" y="175" fill="#44ccff" font-size="11">Bluetooth</text>
     <!-- ESP32 Client -->
     <rect x="630" y="150" width="130" height="80" rx="12" fill="#1e2a4a" stroke="#44ccff" stroke-width="2"/>
-    <text x="695" y="185" text-anchor="middle" fill="#44ccff" font-size="14">ESP32 Client</text>
-    <text x="695" y="205" text-anchor="middle" fill="#ccc" font-size="10">Light &amp; Fan</text>
     <!-- Animated IoT dots -->
     <circle cx="50" cy="180" r="4" fill="#00e5ff">
       <animate attributeName="r" values="3;6;3" dur="1.2s" repeatCount="indefinite"/>
