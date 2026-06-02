@@ -1,0 +1,21 @@
+101.pcm    It is already the maximum volume
+102.pcm    It is already the minimum volume
+103.pcm    Nova Move Activated
+104.pcm    I AM GOING TO SLEEP
+105.pcm    BYE , IM GOING TO SLEEP
+106.pcm    SEE YOU, I AM GOING TO SLEEP MODE
+107.pcm    WISHES TO JUDGES , I AM NOVA MOVE
+108.pcm    moving forward
+109.pcm    moving backward
+110.pcm    turning left
+111.pcm    turning right
+112.pcm    stopping
+113.pcm    Awww , Love You Too Babe
+114.pcm    Light on
+115.pcm    Light off
+116.pcm    Fan On
+117.pcm    Fan off
+118.pcm    Turning to bed
+119.pcm    Turning to chair
+120.pcm    Toilets activated
+121.pcm    Toilets deactivated
