@@ -18,8 +18,6 @@
     <line x1="330" y1="100" x2="400" y2="100" stroke="#00e5ff" stroke-width="3" stroke-dasharray="8,4">
       <animate attributeName="stroke-dashoffset" values="0;-24" dur="0.8s" repeatCount="indefinite"/>
     </line>
-    <text x="365" y="85" fill="#aaa" font-size="11">UART (115200)</text>
-    <text x="365" y="130" fill="#888" font-size="10">0x01..0x0B</text>
     <!-- Arduino block -->
     <rect x="410" y="60" width="130" height="80" rx="12" fill="#1e2a4a" stroke="#66ff66" stroke-width="2"/>
     <text x="475" y="95" text-anchor="middle" fill="#66ff66" font-size="14">Arduino Uno</text>
