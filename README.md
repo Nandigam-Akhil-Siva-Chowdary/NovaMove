@@ -1,174 +1,298 @@
-# NovaMove 🦼✨
+<!-- 
+  IoT Voice-Controlled Wheelchair with Home Automation
+  Animated SVG + Modern README
+-->
 
 <div align="center">
-  <img src="assets/novamove_banner.png" alt="NovaMove Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&pause=1000&color=00B8FF&center=true&vCenter=true&width=600&lines=IoT+Voice+Wheelchair;Offline+Control;Obstacle+Avoidance;Home+Automation;Bed+%E2%86%94+Chair+Conversion" alt="Typing SVG" />
+  <br/>
+  
+  <!-- Animated SVG Banner -->
+  <svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="200" fill="#0a0f1e" rx="20"/>
+    <circle cx="100" cy="100" r="40" fill="#2c3e66" stroke="#00b8ff" stroke-width="2">
+      <animate attributeName="r" values="38;42;38" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#2c3e66;#1e2a4a;#2c3e66" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="100" y="105" text-anchor="middle" fill="#00b8ff" font-size="14" font-family="monospace">VOICE</text>
+    
+    <line x1="140" y1="100" x2="220" y2="100" stroke="#00b8ff" stroke-width="3" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" values="0;-20" dur="1s" repeatCount="indefinite"/>
+    </line>
+    <text x="180" y="85" fill="#aaa" font-size="12">UART (0x01..0x0B)</text>
+    
+    <rect x="220" y="60" width="120" height="80" rx="10" fill="#1e2a4a" stroke="#ffaa44" stroke-width="2">
+      <animate attributeName="stroke" values="#ffaa44;#ffcc66;#ffaa44" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="280" y="95" text-anchor="middle" fill="#ffaa44" font-size="14" font-weight="bold">ESP32</text>
+    <text x="280" y="115" text-anchor="middle" fill="#ccc" font-size="11">SERVER</text>
+    
+    <rect x="220" y="150" width="120" height="40" rx="8" fill="#1e2a4a" stroke="#66ff66" stroke-width="2"/>
+    <text x="280" y="175" text-anchor="middle" fill="#66ff66" font-size="12">STEPPERS</text>
+    
+    <line x1="340" y1="100" x2="420" y2="100" stroke="#00b8ff" stroke-width="3" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+    <text x="380" y="85" fill="#aaa" font-size="12">Bluetooth</text>
+    
+    <rect x="420" y="60" width="120" height="80" rx="10" fill="#1e2a4a" stroke="#44ffaa" stroke-width="2"/>
+    <text x="480" y="95" text-anchor="middle" fill="#44ffaa" font-size="14">ESP32</text>
+    <text x="480" y="115" text-anchor="middle" fill="#ccc" font-size="11">CLIENT</text>
+    
+    <rect x="420" y="150" width="120" height="40" rx="8" fill="#1e2a4a" stroke="#ff6666" stroke-width="2"/>
+    <text x="480" y="175" text-anchor="middle" fill="#ff6666" font-size="12">LIGHT / FAN</text>
+    
+    <line x1="140" y1="100" x2="220" y2="170" stroke="#66ff66" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="170" y="190" fill="#aaa" font-size="10">Arduino Uno</text>
+    <text x="170" y="205" fill="#aaa" font-size="10">(Motors + Sensors)</text>
+    
+    <circle cx="550" cy="30" r="5" fill="#00ffcc">
+      <animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="30" r="5" fill="#00ffcc">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <text x="580" y="50" fill="#888" font-size="10">IoT Mesh</text>
+  </svg>
 
-  <p><em>A Smart, Voice-Controlled Wheelchair Navigation and Wireless IoT Smart-Home Actuation System</em></p>
-
-  <!-- Modern Tech Badges -->
-  <img src="https://img.shields.io/badge/Platform-Arduino%20%7C%20ESP32-00979d?style=for-the-badge&logo=arduino&logoColor=white" alt="Platform Badge" />
-  <img src="https://img.shields.io/badge/Connectivity-Bluetooth-3b82f6?style=for-the-badge&logo=bluetooth&logoColor=white" alt="Bluetooth Badge" />
-  <img src="https://img.shields.io/badge/Smart--Home-Actuation-10b981?style=for-the-badge&logo=home-assistant&logoColor=white" alt="IoT Badge" />
-  <img src="https://img.shields.io/badge/Voice--Recognition-VC--02-0891b2?style=for-the-badge&logo=voice&logoColor=white" alt="Voice Badge" />
-  <img src="https://img.shields.io/badge/License-MIT-slate?style=for-the-badge" alt="License Badge" />
+  <p>
+    <img src="https://img.shields.io/badge/Arduino-UNO-00979D?style=for-the-badge&logo=arduino&logoColor=white" />
+    <img src="https://img.shields.io/badge/ESP32-Enabled-000000?style=for-the-badge&logo=espressif&logoColor=white" />
+    <img src="https://img.shields.io/badge/Offline_Voice-VC02-FF6C37?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Bluetooth-Bridge-0082C9?style=for-the-badge&logo=bluetooth&logoColor=white" />
+  </p>
 </div>
 
 ---
 
-## 📖 Project Overview
+## 🧩 System Overview
 
-**NovaMove** is a next-generation assistive technology suite combining voice-controlled robotics with smart home automation. The system leverages an offline **VC-02 Speech Recognition Module** to receive and broadcast commands across an array of microcontrollers:
-1. **Arduino Uno**: Directs chassis movement (L298N H-Bridge) and automates collision avoidance through real-time distance telemetry (HC-SR04).
-2. **ESP32 Server (Wheelchair Hub)**: Drives mechanical adjustments (Stepper motors for sleep/sit recline) and forwards environmental commands.
-3. **ESP32 Client (Smart Home Hub)**: Receives relayed Bluetooth signals from the server to toggle home appliances (lights, fans) hands-free.
+**An intelligent wheelchair** that listens to your voice **offline**, avoids obstacles automatically, and can even control home appliances wirelessly. It also **converts into a bed** with two stepper motors – all via voice commands.
 
----
-
-## ⚡ System Connection & Data Flow
-
-Below is the live system architecture illustrating how voice commands broadcast to controllers, how telemetry feeds into the obstacle avoidance loop, and how commands relay wirelessly to appliances:
-
-<div align="center">
-  <img src="assets/system_architecture.svg" alt="NovaMove System Architecture" width="95%" style="background-color: #0b0f19; padding: 10px; border-radius: 16px; border: 1px solid #1e293b;" />
-</div>
-
----
-
-## 🔌 Electronics & Wiring Guide
-
-To build NovaMove, wire your modules according to the pin mapping tables below.
-
-### 1. Arduino Uno: Chassis Navigation & Obstacle Avoidance
-
-> [!WARNING]  
-> **Critical Pin Conflict Detected in Stock Sketch:**  
-> In the standard sketch, **Pin 5** is assigned to both `ENA` (Motor Speed) and `ECHO_BACK` (Rear Sensor Echo), and **Pin 6** is assigned to `ENB` (Motor Speed) and `TRIG_LEFT` (Left Sensor Trigger). Running this layout directly causes electrical cross-talk and telemetry failure.
-> 
-> **How to Fix:** We recommend re-routing the L298N Enable pins to Analog Pins **A4** (ENA) and **A5** (ENB) configured as digital outputs. Update the sketch defines as follows:
-> ```cpp
-> #define ENA A4  // Re-routed from pin 5
-> #define ENB A5  // Re-routed from pin 6
-> ```
-
-#### DC Motor Driver (L298N) Connections
-| L298N Pin | Arduino Pin | Description | Color/Wiring Note |
-| :--- | :--- | :--- | :--- |
-| **ENA** | `Pin A4` *(Recommended)* | Left Motor PWM Speed Control | Enable jumper removed |
-| **ENB** | `Pin A5` *(Recommended)* | Right Motor PWM Speed Control | Enable jumper removed |
-| **IN1** | `Pin 8` | Left Motor Direction 1 | Connects to Arduino Digital IO |
-| **IN2** | `Pin 9` | Left Motor Direction 2 | Connects to Arduino Digital IO |
-| **IN3** | `Pin 10` | Right Motor Direction 1 | Connects to Arduino Digital IO |
-| **IN4** | `Pin 11` | Right Motor Direction 2 | Connects to Arduino Digital IO |
-| **VCC** | `External 12V` | High voltage motor power supply | Connect to battery positive |
-| **GND** | `Common GND` | Common ground rail | Connects to Arduino GND |
-
-#### Ultrasonic Sensors (HC-SR04) & Touch Controls
-| Peripheral | Trig Pin | Echo / Touch Pin | Power Pin | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **Front Sensor** | `Pin 2` | `Pin 3` | `5V` / `GND` | Forward-looking range finder |
-| **Back Sensor** | `Pin 4` | `Pin 5` | `5V` / `GND` | Reverse-looking range finder |
-| **Left Sensor** | `Pin 6` | `Pin 7` | `5V` / `GND` | Left-looking range finder |
-| **Right Sensor** | `Pin 12` | `Pin 13` | `5V` / `GND` | Right-looking range finder |
-| **Touch Front** | — | `Pin A0` | `5V` / `GND` | Tactile bumper sensor (Front) |
-| **Touch Back** | — | `Pin A1` | `5V` / `GND` | Tactile bumper sensor (Back) |
-| **Touch Left** | — | `Pin A2` | `5V` / `GND` | Tactile bumper sensor (Left) |
-| **Touch Right** | — | `Pin A3` | `5V` / `GND` | Tactile bumper sensor (Right) |
-
----
-
-### 2. ESP32 Server: Wheelchair Hub (Voice & Actuation)
-
-The ESP32 Server listens to the VC-02 module via its hardware serial port (`UART2`), drives two independent ULN2003 stepper driver arrays to adjust the wheelchair posture, and acts as the Bluetooth Master to control the home environment.
-
-#### VC-02 UART Connection
-| VC-02 Module Pin | ESP32 Server Pin | Description |
-| :--- | :--- | :--- |
-| **TXD** | `GPIO 16 (RX2)` | Serial transmit from VC-02 |
-| **RXD** | `GPIO 17 (TX2)` | Serial receive (Optional) |
-| **GND** | `GND` | Common Ground |
-| **VCC** | `5V` | System 5V Supply |
-
-> [!NOTE]  
-> The VC-02 TX wire can also be spliced in parallel to the Arduino Uno's **RX (Pin 0)**. This allows a single broadcast command to reach both microcontrollers simultaneously.
-
-#### Actuator Stepper Motors (28BYJ-48 via ULN2003)
-| Stepper Motor | Driver Input Pins (IN1 - IN4) | ESP32 Pins | Description |
-| :--- | :--- | :--- | :--- |
-| **Backrest Motor** | IN1, IN2, IN3, IN4 | `GPIO 18, 19, 21, 22` | Backrest angle adjustments |
-| **Seat Motor** | IN1, IN2, IN3, IN4 | `GPIO 25, 26, 32, 33` | Seat height / tilt adjustment |
-
----
-
-### 3. ESP32 Client: Smart Home Controller
-
-This ESP32 module runs as a Bluetooth SPP (Serial Port Profile) slave, accepting commands from the Server to drive relays connected to household electronics.
-
-#### Relay / Driver Actuation Pins
-| Connected Appliance | ESP32 GPIO Pin | Trigger State | Description |
-| :--- | :--- | :--- | :--- |
-| **Light Switch** | `GPIO 26` | `HIGH` (ON) / `LOW` (OFF) | Drives Relay for Room Lighting |
-| **Fan Switch** | `GPIO 27` | `HIGH` (ON) / `LOW` (OFF) | Drives Relay for Room Fan |
-
----
-
-## 🗣️ Command Control Protocol (HEX Map)
-
-The VC-02 Voice Module is configured to emit the following hexadecimal command tokens over UART. Below is how each controller interprets them:
-
-| Command Token | Action / Target | Primary Controller | Operation Executed |
-| :---: | :--- | :--- | :--- |
-| `0x01` | **Move Forward** | Arduino Uno | Activates IN1 & IN3 (HIGH) |
-| `0x02` | **Move Backward** | Arduino Uno | Activates IN2 & IN4 (HIGH) |
-| `0x03` | **Turn Left** | Arduino Uno | Spills differential drive for Left spin |
-| `0x04` | **Turn Right** | Arduino Uno | Spills differential drive for Right spin |
-| `0x05` | **Stop Motors** | Arduino Uno | Sets all driver inputs to LOW |
-| `0x06` | **Light ON** | ESP32 Client | Relayed via BT; sets GPIO 26 to HIGH |
-| `0x07` | **Light OFF** | ESP32 Client | Relayed via BT; sets GPIO 26 to LOW |
-| `0x08` | **Fan ON** | ESP32 Client | Relayed via BT; sets GPIO 27 to HIGH |
-| `0x09` | **Fan OFF** | ESP32 Client | Relayed via BT; sets GPIO 27 to LOW |
-| `0x0A` | **Sleep Position**| ESP32 Server | Runs steppers forward to recline backrest |
-| `0x0B` | **Sit Position** | ESP32 Server | Runs steppers in reverse to restore sit |
-
----
-
-## 📂 Codebase Architecture
-
-The project contains three dedicated sketch directories designed to run concurrently:
-
-```bash
-NovaMove/
-├── Arduino_sketch_v1.0/
-│   └── Arduino_sketch_v1.0.ino   # Drive controller + Obstacle avoidance + Touch backup
-├── ESP_Server_v1.1/
-│   └── ESP_Server_v1.1.ino       # Stepper recline drive + BT Master (Broadcaster)
-├── ESP_Client_v1.1/
-│   └── ESP_Client_v1.1.ino       # Smart appliance relays + BT Slave (Receiver)
-└── assets/
-    ├── novamove_banner.png       # Graphic Title Banner
-    └── system_architecture.svg   # Animated System Topology Diagram
+### 🔁 Data Flow
+```
+Voice → VC-02 → (UART) → Arduino Uno (movement + sensors)
+                    ↘
+                     ESP32 Server → (Bluetooth) → ESP32 Client (light/fan)
+                                    ↘ (direct) → Stepper motors (backrest/seat)
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🎥 Animated Block Diagram (SVG)
 
-### 1. Hardware Checklist
-- [ ] 1x Arduino Uno R3 or compatible
-- [ ] 2x ESP32 NodeMCU Development Modules
-- [ ] 1x AI-Thinker VC-02 Voice Recognition Module
-- [ ] 1x L298N Dual H-Bridge Motor Driver
-- [ ] 4x HC-SR04 Ultrasonic Range Sensors
-- [ ] 4x Digital Touch Sensor Plates
-- [ ] 2x 28BYJ-48 Stepper Motors with ULN2003 Drivers
-- [ ] 2x Optocoupled 5V Relay Modules (or transistors for LED/DC Fan demo)
+<svg width="100%" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="background:#0d1117; border-radius:20px; font-family:sans-serif;">
+  
+  <text x="450" y="40" text-anchor="middle" fill="#00b8ff" font-size="24" font-weight="bold">🚀 Hardware & Communication Flow</text>
+  
+  <rect x="30" y="80" width="160" height="100" rx="15" fill="#1f2a44" stroke="#ff9933" stroke-width="2"/>
+  <text x="110" y="120" text-anchor="middle" fill="#ff9933" font-size="16" font-weight="bold">VC-02</text>
+  <text x="110" y="140" text-anchor="middle" fill="#ccc" font-size="12">Voice Module</text>
+  <text x="110" y="160" text-anchor="middle" fill="#aaa" font-size="10">(Offline, UART)</text>
+  
+  <line x1="190" y1="130" x2="290" y2="130" stroke="#00b8ff" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="240" y="115" text-anchor="middle" fill="#00b8ff" font-size="11">UART (115200)</text>
+  <text x="240" y="150" text-anchor="middle" fill="#aaa" font-size="10">0x01..0x0B</text>
+  
+  <circle cx="300" cy="130" r="8" fill="#ffcc00"/>
+  <line x1="300" y1="130" x2="400" y2="80" stroke="#66ff66" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="300" y1="130" x2="400" y2="180" stroke="#66ff66" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <rect x="410" y="50" width="180" height="100" rx="12" fill="#2a3a5e" stroke="#66ff66" stroke-width="2"/>
+  <text x="500" y="85" text-anchor="middle" fill="#66ff66" font-size="16">Arduino Uno</text>
+  <text x="500" y="105" text-anchor="middle" fill="#ccc" font-size="11">L298N Motor Driver</text>
+  <text x="500" y="125" text-anchor="middle" fill="#ccc" font-size="11">4x Ultrasonic + Touch</text>
+  
+  <rect x="410" y="160" width="180" height="100" rx="12" fill="#2a3a5e" stroke="#ffaa44" stroke-width="2"/>
+  <text x="500" y="195" text-anchor="middle" fill="#ffaa44" font-size="16">ESP32 Server</text>
+  <text x="500" y="215" text-anchor="middle" fill="#ccc" font-size="11">Stepper Control</text>
+  <text x="500" y="235" text-anchor="middle" fill="#ccc" font-size="11">Bluetooth Bridge</text>
+  
+  <line x1="590" y1="200" x2="690" y2="200" stroke="#ffaa44" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="640" y="185" fill="#ffaa44" font-size="10">Direct GPIO</text>
+  <rect x="700" y="170" width="150" height="60" rx="10" fill="#3a2a3e" stroke="#ff88aa" stroke-width="1.5"/>
+  <text x="775" y="195" text-anchor="middle" fill="#ff88aa" font-size="12">28BYJ-48</text>
+  <text x="775" y="215" text-anchor="middle" fill="#ccc" font-size="10">Backrest & Seat</text>
+  
+  <path d="M 600 220 Q 750 280 700 360" stroke="#44ccff" stroke-width="2" fill="none" stroke-dasharray="8,4" marker-end="url(#arrow)"/>
+  <text x="680" y="300" fill="#44ccff" font-size="11">Bluetooth Serial</text>
+  
+  <rect x="580" y="360" width="180" height="100" rx="12" fill="#2a3a5e" stroke="#44ccff" stroke-width="2"/>
+  <text x="670" y="395" text-anchor="middle" fill="#44ccff" font-size="16">ESP32 Client</text>
+  <text x="670" y="415" text-anchor="middle" fill="#ccc" font-size="11">LED (Light)</text>
+  <text x="670" y="435" text-anchor="middle" fill="#ccc" font-size="11">DC Motor (Fan)</text>
+  
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#fff"/>
+    </marker>
+  </defs>
+  
+  <circle cx="300" cy="130" r="12" fill="none" stroke="#ffcc00" stroke-width="2">
+    <animate attributeName="r" values="12;20;12" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="500" cy="210" r="8" fill="none" stroke="#ffaa44" stroke-width="2">
+    <animate attributeName="r" values="8;15;8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>
 
-### 2. Software & Build Setup
-1. **Arduino IDE Installation:** Ensure you have the [Arduino IDE](https://www.arduino.cc/en/software) loaded on your PC.
-2. **Library Installation:** Open the Library Manager (`Ctrl + Shift + I`) and install:
-   - **NewPing** (for fast multi-ultrasonic pinging)
-   - **Stepper** (built-in stepper motor library)
-3. **Compile and Upload:**
-   - Upload `Arduino_sketch_v1.0.ino` to your Arduino Uno.
-   - Upload `ESP_Server_v1.1.ino` to the Server ESP32.
-   - Upload `ESP_Client_v1.1.ino` to the Client ESP32.
-4. **Bluetooth Pairing:** The ESP32 Server is programmed to search automatically for an SPP target named `"ESP32_Client"`. Once powered, they will establish connection indicated by the UART log `Connected to Client ESP32`.
+---
+
+## 🔌 Complete Wiring Guide
+
+### 1. VC‑02 to Arduino Uno & ESP32 Server (Shared UART)
+
+| VC‑02 Pin | Connected To          | Note                                 |
+|-----------|-----------------------|--------------------------------------|
+| VCC       | 5V (regulated)        | Minimum 500mA                        |
+| GND       | Common GND            |                                      |
+| TX        | Arduino Pin 0 (RX)    | Use voltage divider (5V→3.3V) to ESP32 |
+|           | ESP32 GPIO16 (RX2)    |                                      |
+
+> ⚠️ Disconnect VC‑02 TX when uploading code to Arduino.
+
+### 2. Arduino Uno → L298N Motor Driver
+
+| L298N Pin | Arduino Pin |
+|-----------|-------------|
+| IN1       | 8           |
+| IN2       | 9           |
+| IN3       | 10          |
+| IN4       | 11          |
+| ENA       | 5V (or PWM) |
+| ENB       | 5V (or PWM) |
+
+Power L298N with **12V** (motors) and its 5V output can power Arduino (optional).
+
+### 3. Ultrasonic Sensors (HC‑SR04)
+
+| Sensor Position | Trig Pin | Echo Pin |
+|----------------|----------|----------|
+| Front          | 2        | 3        |
+| Back           | 4        | 5        |
+| Left           | 6        | 7        |
+| Right          | 12       | 13       |
+
+### 4. TTP223 Touch Sensors (Backup)
+
+| Touch Pad | Arduino Analog Pin |
+|-----------|--------------------|
+| Front     | A0                 |
+| Back      | A1                 |
+| Left      | A2                 |
+| Right     | A3                 |
+
+### 5. ESP32 Server (on wheelchair)
+
+| Component            | ESP32 GPIO |
+|----------------------|------------|
+| VC‑02 RX2 (from VC‑02 TX) | 16 (RX2)   |
+| Stepper 1 (Backrest) IN1‑IN4 | 18,19,21,22 |
+| Stepper 2 (Seat) IN1‑IN4     | 25,26,32,33 |
+
+### 6. ESP32 Client (in home)
+
+| Appliance | GPIO | Driver Required |
+|-----------|------|------------------|
+| Light (LED) | 26 | 220Ω resistor |
+| Fan (5V DC) | 27 | Transistor (2N2222) or relay |
+
+---
+
+## 🧠 Obstacle Avoidance Logic
+
+```mermaid
+graph TD
+    A[Move Forward Command] --> B{Ultrasonic Front < 30cm?}
+    B -- No --> C[Continue Forward]
+    B -- Yes --> D[STOP]
+    D --> E{Check Left & Right Sensors}
+    E --> F[Left Free?] 
+    F -- Yes --> G[Turn Left]
+    F -- No --> H[Turn Right]
+    G --> C
+    H --> C
+```
+
+While **moving backward**, only the rear sensor is checked: obstacle → **STOP**.
+
+---
+
+## 📦 Repository Files
+
+| File | Description |
+|------|-------------|
+| [`Arduino_sketch_v1.0.ino`](./Arduino_sketch_v1.0/Arduino_sketch_v1.0.ino) | Arduino Uno code – motors, sensors, touch backup |
+| [`ESP_Server_v1.1.ino`](./ESP_Server_v1.1/ESP_Server_v1.1.ino) | ESP32 Server – stepper control + Bluetooth forward |
+| [`ESP_Client_v1.1.ino`](./ESP_Client_v1.1/ESP_Client_v1.1.ino) | ESP32 Client – light & fan switching |
+
+---
+
+## 🎤 Voice Command Table
+
+| Voice Command           | UART Hex | Action |
+|-------------------------|----------|--------|
+| “Move forward”          | `0x01`   | Wheelchair moves forward |
+| “Move backward”         | `0x02`   | Moves backward |
+| “Turn left”             | `0x03`   | Turns left |
+| “Turn right”            | `0x04`   | Turns right |
+| “Stop”                  | `0x05`   | Stops all motors |
+| “Light on”              | `0x06`   | Home light ON |
+| “Light off”             | `0x07`   | Home light OFF |
+| “Fan on”                | `0x08`   | Home fan ON |
+| “Fan off”               | `0x09`   | Home fan OFF |
+| “Sleep position”        | `0x0A`   | Backrest lowers → bed mode |
+| “Sit position”          | `0x0B`   | Backrest raises → chair mode |
+
+> You can retrain the VC‑02 with your own voice using the Ai‑Thinker Voice Platform.
+
+---
+
+## 🛠️ Setup in 5 Minutes
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/your-username/iot-voice-wheelchair.git
+   ```
+
+2. **Upload firmware to VC‑02** using USB‑TTL (map hex codes to phrases).
+
+3. **Upload `Arduino_sketch_v1.0.ino`** to Arduino Uno (disconnect VC‑02 TX first).
+
+4. **Upload `ESP_Server_v1.1.ino`** to the ESP32 on the wheelchair.
+
+5. **Upload `ESP_Client_v1.1.ino`** to the ESP32 in your home.
+
+6. **Power** the wheelchair from a 12V battery (with 5V regulators) and the client ESP32 via USB.
+
+7. **Test** voice commands. The server ESP32 will auto‑pair with the client (ensure client is powered first).
+
+---
+
+## 🎨 Customisation Tips
+
+- **Change stepper step count** – modify `backrestSleepSteps` in server code based on your chair mechanism.
+- **Add limit switches** to stepper motors to prevent over‑travel.
+- **Improve obstacle detection** – adjust `OBSTACLE_THRESHOLD` (default 30 cm).
+- **Use PWM for speed control** – connect ENA/ENB to PWM pins on Arduino.
+
+---
+
+## 📜 License
+
+MIT – free to use, modify, and share.
+
+---
+
+## 💬 Show Your Support
+
+If this project helps you, give it a ⭐ and share it with makers and wheelchair users.
+
+<div align="center">
+  <svg width="200" height="50" viewBox="0 0 200 50">
+    <rect width="200" height="50" fill="#0d1117" rx="25"/>
+    <text x="100" y="32" text-anchor="middle" fill="#00b8ff" font-size="16">❤️ Made with IoT ❤️</text>
+  </svg>
+</div>
