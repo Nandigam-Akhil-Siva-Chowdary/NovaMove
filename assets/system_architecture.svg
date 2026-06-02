@@ -1,0 +1,474 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="100%" height="100%">
+  <defs>
+    <!-- Cyan Glow Filter (Arduino & Voice) -->
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Magenta Glow Filter (ESP32 Server) -->
+    <filter id="glow-magenta" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Green Glow Filter (ESP32 Client) -->
+    <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Yellow Glow Filter (LED / Fan Status) -->
+    <filter id="glow-yellow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Diagonal Stripe Pattern for Cables -->
+    <pattern id="stripes" width="20" height="20" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="20" x2="20" y2="0" stroke="#1e293b" stroke-width="4" />
+    </pattern>
+  </defs>
+
+  <style>
+    /* CSS Typography and Base Styles */
+    text {
+      font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+    }
+    
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+      fill: #f8fafc;
+      letter-spacing: 0.5px;
+    }
+    
+    .subtitle {
+      font-size: 13px;
+      fill: #94a3b8;
+      font-weight: 400;
+    }
+    
+    .label-header {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    .label-body {
+      font-size: 10px;
+      fill: #94a3b8;
+    }
+
+    .pin-label {
+      font-size: 9px;
+      font-weight: bold;
+      fill: #cbd5e1;
+    }
+    
+    /* Animation Keyframes */
+    @keyframes dash-forward {
+      to {
+        stroke-dashoffset: -40;
+      }
+    }
+    
+    @keyframes pulse-light {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes led-glow {
+      0%, 100% { fill: #fef08a; filter: drop-shadow(0px 0px 2px #eab308); }
+      50% { fill: #fde047; filter: drop-shadow(0px 0px 10px #facc15); }
+    }
+
+    @keyframes rotate-fan {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes bt-pulse {
+      0% { r: 8px; opacity: 1; stroke-width: 1px; }
+      50% { opacity: 0.8; stroke-width: 1.5px; }
+      100% { r: 35px; opacity: 0; stroke-width: 0.5px; }
+    }
+
+    @keyframes voice-bar {
+      0%, 100% { height: 10px; y: 265px; }
+      50% { height: 35px; y: 252px; }
+    }
+
+    @keyframes radar-wave {
+      0% { stroke-dashoffset: 0; opacity: 0.8; }
+      100% { stroke-dashoffset: -30; opacity: 0.1; }
+    }
+    
+    /* Animation Classes */
+    .flow-cyan {
+      stroke-dasharray: 8, 8;
+      animation: dash-forward 1.2s linear infinite;
+    }
+
+    .flow-magenta {
+      stroke-dasharray: 8, 8;
+      animation: dash-forward 1.2s linear infinite;
+    }
+
+    .flow-green {
+      stroke-dasharray: 6, 6;
+      animation: dash-forward 1.5s linear infinite;
+    }
+
+    .bt-wave-1 {
+      animation: bt-pulse 2s infinite linear;
+      transform-origin: 550px 400px;
+    }
+
+    .bt-wave-2 {
+      animation: bt-pulse 2s infinite linear;
+      animation-delay: 1s;
+      transform-origin: 550px 400px;
+    }
+
+    .voice-bar-1 { animation: voice-bar 0.8s infinite ease-in-out; }
+    .voice-bar-2 { animation: voice-bar 1.1s infinite ease-in-out; animation-delay: 0.1s; }
+    .voice-bar-3 { animation: voice-bar 0.6s infinite ease-in-out; animation-delay: 0.3s; }
+    .voice-bar-4 { animation: voice-bar 0.9s infinite ease-in-out; animation-delay: 0.2s; }
+    .voice-bar-5 { animation: voice-bar 0.7s infinite ease-in-out; animation-delay: 0.4s; }
+
+    .spinning-fan {
+      animation: rotate-fan 0.8s linear infinite;
+      transform-origin: 725px 500px;
+    }
+    
+    .spinning-motor {
+      animation: rotate-fan 3s linear infinite;
+      transform-origin: 755px 130px;
+    }
+
+    .spinning-stepper {
+      animation: rotate-fan 4s linear infinite;
+      transform-origin: 565px 490px;
+    }
+
+    .pulse-glow {
+      animation: led-glow 2s infinite ease-in-out;
+    }
+
+    .radar-pulse {
+      stroke-dasharray: 5, 5;
+      animation: radar-wave 2s linear infinite;
+    }
+
+    .pulse-opacity {
+      animation: pulse-light 2s infinite ease-in-out;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="850" height="550" rx="16" fill="#0b0f19" stroke="#1e293b" stroke-width="2" />
+  
+  <!-- Grid Accent Background Pattern -->
+  <g opacity="0.05">
+    <path d="M 0,50 L 850,50 M 0,100 L 850,100 M 0,150 L 850,150 M 0,200 L 850,200 M 0,250 L 850,250 M 0,300 L 850,300 M 0,355 L 850,355 M 0,400 L 850,400 M 0,450 L 850,450 M 0,500 L 850,500" stroke="#475569" stroke-width="1"/>
+    <path d="M 50,0 L 50,550 M 100,0 L 100,550 M 150,0 L 150,550 M 200,0 L 200,550 M 250,0 L 250,550 M 300,0 L 300,550 M 350,0 L 350,550 M 400,0 L 400,550 M 450,0 L 450,550 M 500,0 L 500,550 M 550,0 L 550,550 M 600,0 L 600,550 M 650,0 L 650,550 M 700,0 L 700,550 M 750,0 L 750,550 M 800,0 L 800,550" stroke="#475569" stroke-width="1"/>
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(30, 20)">
+    <text class="title">NovaMove IoT System Architecture</text>
+    <text class="subtitle" y="24">Voice Commands, Multi-Microcontroller Telemetry, and Wireless Smart Home Actuation</text>
+  </g>
+
+  <!-- ==================== SIGNAL CONDUITS (PATHS BEHIND NODES) ==================== -->
+  
+  <!-- VC-02 -> Arduino RX (D0) Signal Line -->
+  <path d="M 180,270 L 235,270 L 235,160 L 300,160" fill="none" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 180,270 L 235,270 L 235,160 L 300,160" fill="none" stroke="#06b6d4" stroke-width="2" class="flow-cyan" stroke-linecap="round"/>
+
+  <!-- VC-02 -> ESP32 Server RX2 (GPIO 16) Signal Line -->
+  <path d="M 180,270 L 235,270 L 235,400 L 300,400" fill="none" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 180,270 L 235,270 L 235,400 L 300,400" fill="none" stroke="#ec4899" stroke-width="2" class="flow-magenta" stroke-linecap="round"/>
+
+  <!-- Arduino D5/6/8/9/10/11 -> L298N Motor Driver -->
+  <path d="M 460,160 L 550,160" fill="none" stroke="#1e293b" stroke-width="4" />
+  <path d="M 460,160 L 550,160" fill="none" stroke="#f59e0b" stroke-width="2" class="flow-green" />
+
+  <!-- L298N Motor Driver -> DC Motors -->
+  <path d="M 630,160 L 720,160" fill="none" stroke="#1e293b" stroke-width="4" />
+  <path d="M 630,160 L 720,160" fill="none" stroke="#f97316" stroke-dasharray="4,4" stroke-width="2" />
+
+  <!-- Arduino Uno -> Ultrasonic Sensors (Common Conduit) -->
+  <path d="M 380,100 L 380,65" fill="none" stroke="#1e293b" stroke-width="3" />
+  <path d="M 380,100 L 380,65" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3" />
+
+  <!-- ESP32 Server -> Stepper Motors Conduit -->
+  <path d="M 380,460 L 380,490 L 500,490" fill="none" stroke="#1e293b" stroke-width="4" />
+  <path d="M 380,460 L 380,490 L 500,490" fill="none" stroke="#d946ef" stroke-width="2" class="flow-magenta" />
+
+  <!-- ESP32 Client -> Light Appliance Conduit -->
+  <path d="M 725,340 L 725,260" fill="none" stroke="#1e293b" stroke-width="4" />
+  <path d="M 725,340 L 725,260" fill="none" stroke="#eab308" stroke-width="2" class="flow-green" />
+
+  <!-- ESP32 Client -> Fan Appliance Conduit -->
+  <path d="M 725,460 L 725,485" fill="none" stroke="#1e293b" stroke-width="4" />
+  <path d="M 725,460 L 725,485" fill="none" stroke="#10b981" stroke-width="2" class="flow-green" />
+
+
+  <!-- ==================== WIRELESS COMMUNICATIONS ==================== -->
+  
+  <!-- Bluetooth Wireless Link (ESP32 Server <-> ESP32 Client) -->
+  <g>
+    <!-- Base Link Line -->
+    <line x1="460" y1="400" x2="660" y2="400" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.3"/>
+    
+    <!-- Central Bluetooth Transceiver Hub -->
+    <g transform="translate(560, 400)">
+      <!-- Pulsing Wireless Rings -->
+      <circle r="15" fill="none" stroke="#3b82f6" opacity="0.8" class="bt-wave-1"/>
+      <circle r="25" fill="none" stroke="#3b82f6" opacity="0.5" class="bt-wave-2"/>
+      
+      <!-- Hub Capsule -->
+      <rect x="-18" y="-12" width="36" height="24" rx="6" fill="#1d4ed8" stroke="#3b82f6" stroke-width="1.5"/>
+      <!-- Bluetooth Icon -->
+      <path d="M -4,-6 L 4,2 L -4,6 M 0,-6 L 0,6 L 4,3 L -4,-3" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="560" y="375" fill="#60a5fa" font-size="10" font-weight="bold" text-anchor="middle" class="pulse-opacity">Bluetooth Link (SPP)</text>
+  </g>
+
+
+  <!-- ==================== NODE 1: VC-02 VOICE RECOGNITION ==================== -->
+  <g transform="translate(40, 220)">
+    <!-- Box -->
+    <rect x="0" y="0" width="140" height="100" rx="12" fill="#0f172a" stroke="#0891b2" stroke-width="2" filter="url(#glow-cyan)"/>
+    <!-- Card Header -->
+    <rect x="0" y="0" width="140" height="28" rx="12" fill="#0891b2" opacity="0.15"/>
+    <text x="70" y="18" fill="#22d3ee" class="label-header" text-anchor="middle">VC-02 VOICE</text>
+    
+    <!-- Visual Voice Waveform Bars -->
+    <g transform="translate(25, 0)">
+      <rect x="10" y="265" width="4" height="10" rx="2" fill="#22d3ee" class="voice-bar-1"/>
+      <rect x="20" y="260" width="4" height="20" rx="2" fill="#22d3ee" class="voice-bar-2"/>
+      <rect x="30" y="250" width="4" height="40" rx="2" fill="#22d3ee" class="voice-bar-3"/>
+      <rect x="40" y="260" width="4" height="20" rx="2" fill="#22d3ee" class="voice-bar-4"/>
+      <rect x="50" y="265" width="4" height="10" rx="2" fill="#22d3ee" class="voice-bar-5"/>
+    </g>
+
+    <!-- Sub-info -->
+    <text x="70" y="88" fill="#94a3b8" font-size="9" text-anchor="middle">Offline Speech Module</text>
+    
+    <!-- Output Pin Port -->
+    <circle cx="140" cy="50" r="4" fill="#22d3ee"/>
+    <text x="130" y="47" class="pin-label" text-anchor="end">TX</text>
+  </g>
+
+
+  <!-- ==================== NODE 2: ARDUINO UNO ==================== -->
+  <g transform="translate(300, 100)">
+    <!-- Box -->
+    <rect x="0" y="0" width="160" height="120" rx="12" fill="#0f172a" stroke="#0d9488" stroke-width="2" />
+    <rect x="0" y="0" width="160" height="30" rx="12" fill="#0d9488" opacity="0.15"/>
+    <!-- Title -->
+    <text x="80" y="20" fill="#14b8a6" class="label-header" text-anchor="middle">ARDUINO UNO</text>
+    
+    <!-- Microcontroller Chip Design -->
+    <rect x="50" y="50" width="60" height="30" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="80" y="68" fill="#64748b" font-size="9" font-weight="bold" text-anchor="middle">ATMEGA328P</text>
+    
+    <!-- Input/Output Pins markers -->
+    <!-- D0 RX -->
+    <circle cx="0" cy="60" r="4" fill="#06b6d4" />
+    <text x="8" y="63" class="pin-label">RX (D0)</text>
+    
+    <!-- D5/D6 Speed Outputs -->
+    <circle cx="160" cy="60" r="4" fill="#f59e0b" />
+    <text x="152" y="63" class="pin-label" text-anchor="end">D5,D6 (PWM)</text>
+    
+    <!-- D8-D11 Direction Outputs -->
+    <circle cx="160" cy="90" r="4" fill="#f59e0b" />
+    <text x="152" y="93" class="pin-label" text-anchor="end">D8-D11 (DIR)</text>
+
+    <!-- Top Sensor Interface -->
+    <circle cx="80" cy="0" r="4" fill="#38bdf8" />
+    <text x="80" y="12" class="pin-label" text-anchor="middle">SENSORS</text>
+  </g>
+
+
+  <!-- ==================== NODE 3: ESP32 SERVER ==================== -->
+  <g transform="translate(300, 340)">
+    <!-- Box -->
+    <rect x="0" y="0" width="160" height="120" rx="12" fill="#0f172a" stroke="#db2777" stroke-width="2" filter="url(#glow-magenta)"/>
+    <rect x="0" y="0" width="160" height="30" rx="12" fill="#db2777" opacity="0.15"/>
+    <!-- Title -->
+    <text x="80" y="20" fill="#f472b6" class="label-header" text-anchor="middle">ESP32 SERVER</text>
+    
+    <!-- Chip details -->
+    <rect x="55" y="45" width="50" height="40" rx="4" fill="#1e293b" stroke="#db2777" stroke-width="1"/>
+    <path d="M 65,40 L 65,45 M 75,40 L 75,45 M 85,40 L 85,45 M 95,40 L 95,45 M 65,85 L 65,90 M 75,85 L 75,90 M 85,85 L 85,90 M 95,85 L 95,90" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="80" y="68" fill="#e2e8f0" font-size="8" font-weight="bold" text-anchor="middle">ESP-WROOM</text>
+    <text x="80" y="78" fill="#e2e8f0" font-size="8" font-weight="bold" text-anchor="middle">32D</text>
+
+    <!-- Pins -->
+    <!-- RX2 (GPIO 16) -->
+    <circle cx="0" cy="60" r="4" fill="#ec4899"/>
+    <text x="8" y="63" class="pin-label">RX2 (G16)</text>
+    
+    <!-- Bluetooth Icon on Module -->
+    <path d="M 125,50 L 131,56 L 122,62 M 127,50 L 127,62 L 131,59 L 123,53" fill="none" stroke="#f472b6" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Stepper Outputs (G18/19/21/22 and G25/26/32/33) -->
+    <circle cx="80" cy="120" r="4" fill="#d946ef"/>
+    <text x="80" y="113" class="pin-label" text-anchor="middle">GPIO 18..33</text>
+  </g>
+
+
+  <!-- ==================== NODE 4: ESP32 CLIENT ==================== -->
+  <g transform="translate(660, 340)">
+    <!-- Box -->
+    <rect x="0" y="0" width="160" height="120" rx="12" fill="#0f172a" stroke="#059669" stroke-width="2" filter="url(#glow-green)"/>
+    <rect x="0" y="0" width="160" height="30" rx="12" fill="#059669" opacity="0.15"/>
+    <!-- Title -->
+    <text x="80" y="20" fill="#34d399" class="label-header" text-anchor="middle">ESP32 CLIENT</text>
+    
+    <!-- Chip -->
+    <rect x="55" y="45" width="50" height="40" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+    <text x="80" y="68" fill="#e2e8f0" font-size="8" font-weight="bold" text-anchor="middle">ESP-WROOM</text>
+    <text x="80" y="78" fill="#e2e8f0" font-size="8" font-weight="bold" text-anchor="middle">32D</text>
+
+    <!-- Pins -->
+    <circle cx="0" cy="60" r="4" fill="#34d399"/>
+    <text x="8" y="63" class="pin-label">Bluetooth RX</text>
+
+    <!-- Light output G26 -->
+    <circle cx="65" cy="0" r="4" fill="#eab308"/>
+    <text x="65" y="12" class="pin-label" text-anchor="middle">G26 (LIGHT)</text>
+    
+    <!-- Fan output G27 -->
+    <circle cx="105" cy="120" r="4" fill="#10b981"/>
+    <text x="105" y="113" class="pin-label" text-anchor="middle">G27 (FAN)</text>
+  </g>
+
+
+  <!-- ==================== ACTUATORS & PERIPHERALS ==================== -->
+
+  <!-- 1. Ultrasonic Sensors (HC-SR04 x4) -->
+  <g transform="translate(300, 10)">
+    <rect x="0" y="0" width="160" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="80" y="18" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">HC-SR04 SENSORS (x4)</text>
+    <text x="80" y="32" fill="#38bdf8" font-size="8" text-anchor="middle">D2/3, D4/5, D6/7, D12/13</text>
+    <text x="80" y="44" fill="#94a3b8" font-size="7" text-anchor="middle">&amp; Analog Touch Backup A0-A3</text>
+    
+    <!-- Sensor Eyes -->
+    <circle cx="20" cy="25" r="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <circle cx="20" cy="25" r="3" fill="#38bdf8"/>
+    <circle cx="140" cy="25" r="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <circle cx="140" cy="25" r="3" fill="#38bdf8"/>
+
+    <!-- Radar wave outputs -->
+    <path d="M -15,10 A 15,15 0 0,0 -15,40" fill="none" stroke="#38bdf8" stroke-width="1.5" class="radar-pulse" />
+  </g>
+
+  <!-- 2. L298N Motor Driver -->
+  <g transform="translate(550, 110)">
+    <rect x="0" y="0" width="80" height="70" rx="8" fill="#311013" stroke="#ef4444" stroke-width="1.5" />
+    <!-- Heatsink representation -->
+    <rect x="25" y="10" width="30" height="20" fill="#475569" rx="2" />
+    <line x1="30" y1="10" x2="30" y2="30" stroke="#1e293b" stroke-width="2" />
+    <line x1="35" y1="10" x2="35" y2="30" stroke="#1e293b" stroke-width="2" />
+    <line x1="40" y1="10" x2="40" y2="30" stroke="#1e293b" stroke-width="2" />
+    <line x1="45" y1="10" x2="45" y2="30" stroke="#1e293b" stroke-width="2" />
+    <line x1="50" y1="10" x2="50" y2="30" stroke="#1e293b" stroke-width="2" />
+    
+    <text x="40" y="48" fill="#fca5a5" font-size="10" font-weight="bold" text-anchor="middle">L298N H-BRIDGE</text>
+    <text x="40" y="60" fill="#94a3b8" font-size="8" text-anchor="middle">Dual DC Driver</text>
+
+    <!-- Inputs -->
+    <circle cx="0" cy="50" r="3" fill="#f59e0b"/>
+    <!-- Outputs -->
+    <circle cx="80" cy="50" r="3" fill="#f97316"/>
+  </g>
+
+  <!-- 3. Wheel DC Motors -->
+  <g transform="translate(720, 100)">
+    <!-- Motor Box Outline -->
+    <rect x="0" y="0" width="80" height="80" rx="8" fill="#1e293b" stroke="#f97316" stroke-width="1.5" />
+    <text x="40" y="18" fill="#f8fafc" font-size="9" font-weight="bold" text-anchor="middle">CHASSIS MOTORS</text>
+    
+    <!-- Motor 1 (Left) -->
+    <g transform="translate(25, 45)">
+      <circle r="12" fill="#475569" stroke="#f97316" stroke-width="1"/>
+      <rect x="-15" y="-5" width="6" height="10" rx="1" fill="#cbd5e1" />
+      <circle r="3" fill="#f97316" />
+    </g>
+
+    <!-- Motor 2 (Right / Shaft) -->
+    <g transform="translate(55, 45)" class="spinning-motor">
+      <circle r="12" fill="#475569" stroke="#f97316" stroke-width="1"/>
+      <!-- Rotation line -->
+      <line x1="0" y1="-12" x2="0" y2="12" stroke="#f97316" stroke-width="2" />
+      <circle r="3" fill="#f97316" />
+    </g>
+    
+    <text x="40" y="72" fill="#f97316" font-size="8" font-weight="bold" text-anchor="middle" class="pulse-opacity">MOVING</text>
+  </g>
+
+  <!-- 4. Actuator Stepper Motors (Sleep/Sit positioners) -->
+  <g transform="translate(500, 450)">
+    <rect x="0" y="0" width="115" height="70" rx="8" fill="#1e293b" stroke="#d946ef" stroke-width="1.5" />
+    <text x="57" y="18" fill="#f8fafc" font-size="9" font-weight="bold" text-anchor="middle">RECLINE STEPPERS</text>
+    
+    <!-- Stepper Motor 1 Representation (Backrest) -->
+    <g transform="translate(30, 42)" class="spinning-stepper">
+      <circle r="16" fill="#334155" stroke="#d946ef" stroke-width="1.5" />
+      <!-- Teeth -->
+      <line x1="0" y1="-16" x2="0" y2="16" stroke="#d946ef" stroke-width="1.5"/>
+      <line x1="-16" y1="0" x2="16" y2="0" stroke="#d946ef" stroke-width="1.5"/>
+      <circle r="6" fill="#64748b"/>
+    </g>
+    
+    <!-- Stepper Motor 2 Representation (Seat) -->
+    <g transform="translate(85, 42)">
+      <circle r="16" fill="#334155" stroke="#d946ef" stroke-width="1.5" />
+      <!-- Radial Line -->
+      <line x1="0" y1="0" x2="11" y2="-11" stroke="#d946ef" stroke-width="2" stroke-linecap="round"/>
+      <circle r="6" fill="#64748b"/>
+    </g>
+    
+    <text x="57" y="65" fill="#f472b6" font-size="8" text-anchor="middle">Seat &amp; Backrest Adjustment</text>
+  </g>
+
+  <!-- 5. Smart Home Lights Appliance -->
+  <g transform="translate(680, 200)">
+    <!-- Glowing LED bulb -->
+    <circle cx="45" cy="30" r="18" fill="#fef08a" class="pulse-glow" filter="url(#glow-yellow)" />
+    <!-- Filament & Base -->
+    <path d="M 40,43 L 50,43 M 38,47 L 52,47 M 42,47 L 42,52 L 48,52 L 48,47" fill="none" stroke="#94a3b8" stroke-width="2"/>
+    <path d="M 37,32 L 42,25 L 48,25 L 53,32" fill="none" stroke="#ca8a04" stroke-width="1.5" stroke-linecap="round"/>
+    
+    <text x="45" y="10" fill="#fef08a" font-size="10" font-weight="bold" text-anchor="middle">LIGHT ON</text>
+  </g>
+
+  <!-- 6. Smart Home Fan Appliance -->
+  <g transform="translate(670, 465)">
+    <!-- Fan Unit Box -->
+    <rect x="0" y="0" width="110" height="60" rx="8" fill="#111827" stroke="#10b981" stroke-width="1.5" />
+    <text x="55" y="14" fill="#34d399" font-size="9" font-weight="bold" text-anchor="middle">FAN APPLIANCE</text>
+    
+    <!-- Fan Blades (will spin!) -->
+    <g transform="translate(25, 36)">
+      <circle r="15" fill="#1f2937" stroke="#34d399" stroke-width="1"/>
+      <!-- Spinner blades -->
+      <g class="spinning-fan">
+        <path d="M0,0 Q -8,-15 -2,-18 Q 8,-15 0,0" fill="#34d399" opacity="0.8"/>
+        <path d="M0,0 Q 15,-8 18,-2 Q 15,8 0,0" fill="#34d399" opacity="0.8"/>
+        <path d="M0,0 Q 8,15 2,18 Q -8,15 0,0" fill="#34d399" opacity="0.8"/>
+        <path d="M0,0 Q -15,8 -18,2 Q -15,-8 0,0" fill="#34d399" opacity="0.8"/>
+        <circle cx="0" cy="0" r="3" fill="#ffffff" />
+      </g>
+    </g>
+    <text x="80" y="36" fill="#f8fafc" font-size="9" font-weight="bold">ACTIVE</text>
+    <text x="80" y="48" fill="#94a3b8" font-size="7">Relay Switch</text>
+  </g>
+
+</svg>
