@@ -14,7 +14,6 @@
     <circle cx="300" cy="100" r="30" fill="none" stroke="#ffaa44" stroke-width="3" stroke-dasharray="6,6">
       <animateTransform attributeName="transform" type="rotate" from="0 300 100" to="360 300 100" dur="4s" repeatCount="indefinite"/>
     </circle>
-    <text x="300" y="105" text-anchor="middle" fill="#ffaa44" font-size="14" font-weight="bold">VC-02</text>
     <line x1="330" y1="100" x2="400" y2="100" stroke="#00e5ff" stroke-width="3" stroke-dasharray="8,4">
       <animate attributeName="stroke-dashoffset" values="0;-24" dur="0.8s" repeatCount="indefinite"/>
     </line>
@@ -26,7 +25,6 @@
     <line x1="540" y1="190" x2="620" y2="190" stroke="#44ccff" stroke-width="3" stroke-dasharray="6,3">
       <animate attributeName="stroke-dashoffset" values="0;-18" dur="1s" repeatCount="indefinite"/>
     </line>
-    <text x="580" y="175" fill="#44ccff" font-size="11">Bluetooth</text>
     <!-- ESP32 Client -->
     <rect x="630" y="150" width="130" height="80" rx="12" fill="#1e2a4a" stroke="#44ccff" stroke-width="2"/>
     <!-- Animated IoT dots -->
