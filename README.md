@@ -281,19 +281,9 @@ Pull requests, bug reports, and feature suggestions are welcome. Let’s make mo
     <text x="150" y="35" text-anchor="middle" fill="#00e5ff" font-size="16" font-weight="bold">❤️ Made with IoT & Open Source ❤️</text>
   </svg>
   <br/>
-  <img src="https://img.shields.io/github/stars/your-username/iot-voice-wheelchair?style=social" />
-  <img src="https://img.shields.io/github/forks/your-username/iot-voice-wheelchair?style=social" />
+  <img src="https://img.shields.io/github/stars/Nandigam-Akhil-Siva-Chowdary/NovaMove?style=social" />
+  <img src="https://img.shields.io/github/forks/Nandigam-Akhil-Siva-Chowdary/NovaMove?style=social" />
 </div>
 
 ---
 
-## ✅ How to Use This
-
-1. **Create a new file** in your repository called `README.md`.
-2. **Copy the entire text** from the code block above.
-3. **Paste** it into the file.
-4. **Commit and push** to GitHub.
-
-The SVGs will render with smooth animations on GitHub (they are inline and fully self‑contained). Replace `your-username` with your actual GitHub username in the badges at the bottom (optional).
-
-Your repository now has a professional, attractive, and highly informative README that includes everything from firmware upload to wiring and code logic.
